@@ -1,0 +1,32 @@
+{
+  "name": "postgresql-smartbrain-app",
+  "version": "1.0.0",
+  "description": "Repository to learn Poistgresql workflow with Node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WingChhun/postgresql-smartbrain-app.git"
+  },
+  "author": "James Chhun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WingChhun/postgresql-smartbrain-app/issues"
+  },
+  "homepage": "https://github.com/WingChhun/postgresql-smartbrain-app#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "knex": "^0.16.3",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
