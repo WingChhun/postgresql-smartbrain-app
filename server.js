@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 //Note: Routes
-//TODO; separate int a routes file: follow MVC architecture
+//TODO; separate int a routes file: VC architecture
 app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Root route' });
 });
