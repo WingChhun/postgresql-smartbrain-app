@@ -5,6 +5,18 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const morgan = require('morgan');
+const knex = require('knex');
+
+//Note: connect to db using knex
+const db = knex({
+  client: 'pg',
+  connection: {
+    host: 'localhost',
+
+    database: 'smart-brain'
+  }
+});
+
 const PORT = 5000;
 const database = {
   users: [
@@ -29,6 +41,23 @@ app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Root route' });
 });
 
+app.get('/select', (req, res) => {});
+
+app.post('/register', (req, res) => {
+  const { email, name, password } = req.body;
+
+  const error = `Unable to register ${email}`;
+
+  //TODO: dont have passwor yet
+  db('users')
+    .returning('*')
+    .insert({ email, name, joined: new Date() })
+    //$ Success
+    .then(response => res.status(200).json(response[0]))
+    //! Error : Dont return database error
+    .catch(err => res.status(400).json(error));
+});
+
 //Note: start server
 app
   .listen(PORT, () => {
@@ -38,3 +67,6 @@ app
     //* close server
     app.close();
   });
+
+//* Export app for possible mocha chai testing
+module.exports = app;
